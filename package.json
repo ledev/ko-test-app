@@ -2,7 +2,14 @@
   "name": "ko-test-app",
   "version": "1.0.0",
   "description": "just a test app for ko",
-  "scripts": {},
+  "scripts": {
+    "prestart": "node buildScripts/startMessage.js",
+    "start" : "npm-run-all --parallel security-check",
+    "open:src" : "node buildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000 --subdomain ledev",
+    "share" : "npm-run-all --parallel open:src localtunnel"
+  },
   "author": "Triet Le",
   "license": "MIT",
   "dependencies": {
